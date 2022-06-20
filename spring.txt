@@ -1,0 +1,81 @@
+Spring Framework : 자바 플랫폼을 위한 오픈 소스 애플리케이션 프레임워크.
+ㄴ 동적인 웹 사이트 개발을 위한 서비스 제공.
+
+- 라이브러리 -
+라이브러리는 개발에 필요한 기능이 있을 떄 직접 가져와 사용할 수 있도록 자주 사용되는 기능들을 모아 미리 구현해 둔 것.
+
+- 프레임워크 -
+라이브러리와 마찬가지로 필요한 기능이 구현되어 있지만,
+라이브러리와 달리 프레임워크는 정해진 틀 안에서 미리 구현된 기능을 사용해야된다.
+
+- 라이브러리 & 프레임워크 차이 -
+"개발의 주도권"
+라이브러리는 개발자가 직접 프로그램의 흐름을 결정하지만 프레임워크는 정해진 흐름에 맞게 개발자가 프로그램을 개발.
+
+- MVC(Model View Controller) 구조 -
+
+●View - Controller - Service - Serviceimpl - DAO - DAOimpl - DTO - DispatcherServlet , servlet-context
+
+1. View : 사용자에게 보여지는 화면
+JSP통해 화면구성 Controller를 통해 백엔드 서버와 연결
+
+2.Controller : View와 Service 사이를 연결한다. 
+클라이언트에서 입력한 Url에 맞는 View를 보여주고, View에서 처리하는 데이터를 Service로 전달.
+
+3.Service : 실제 로직을 처리하는 곳.
+모든 기능은 Service에서 만들어진다. Controller를 통해 ,화면과 연결, DAO를 통해 데이터 베이스와 연결.
+
+4.DAO(Data Accesss Object) : 프로젝트와 데이터베이스 연결
+Mapper에 SQL을 명시한뒤 Mapper와 함께 데이터베이스와 데이터를 주고받는다.
+
+5.DTO(Data Transfer Object) or VO(Value Object):MVC구조 사이사이 데이터 교환을 위한 오브젝트
+getter/sertter 두가지 함수만 가지고 있으며 주로 데이터베이스 테이블과 매칭된다.
+ 
+6.Serviceimpl & DAOimpl(다형성을 위한 구조)
+impl = implement(구현)
+Serviceimpl => Service 인터페이스 implements
+DAOimpl => DAO 인터페이스 implements
+
+7.IoC(Inversion of Control)
+"제어의 역전" -> 제어하는 주체가 바뀐다. ex)@Autowired
+
+스프링 컨테이너(IoC Container)는 프로젝트에서 사용되는 객체들을 Bean(스프링에서 관리되는 자바 객체)으로 관리,
+@Autowired를 통해 객체에 주입.
+
+8.DI(Dependency Injection) : Spring에서 IoC 구조를 만드는 방식.
+"의존성 주입"
+객체간의 의존성을 줄이기 위함이다.
+밖에서 객체를 생성해 넣어주기 때문에 재사용성이 늘어나고 수정에 용이
+
+9.AOP(Aspect Object Programming, 관점 지향 프로그래밍)
+로깅, 트랜잭션, 보안 등 여러 모듈에서 공통적으로 사용하는 기능을 분리하여 관리 할 수 있다.
+즉, 여러 객체에 공통으로 적용할 수 있는 기능을 구분함으로써 재사용성을 높여주는 프로그래밍 기법.
+
+
+- MVC 구조 실행 순서 -
+Request -> DispatcherServlet(web.xml 내용 가로챔) -> HandlerMapping(요청사항 처리 가능한 Controller를 찾음)-> Controller -> Service -> DAO -> DB 
+-> DAO -> Service -> Controller -> ViewResolver(View 하면을 찾음, logic처리 결과(Model)를 View에 보냄) -> View -> DispatcherServlet(Client에세 View출력) -> Response
+
+
+- MyBatis -
+SQL Mapping 프레임 워크
+ㄴSQL과 Object간의 Mapping
+
+SQL 쿼리를 직접 작성하므로 최적화된 쿼리를 구현할 수 있다.
+엔티티에 종속받지 않고 다양한 테이블을 조합할 수 있다.
+
+- JPA -
+객체중심 적인 개발 가능
+MyBatis와 달리 DB만 만들면 domain 설정대로 데이터베이스 만들어주는 등.. 편리함.
+그러나 복잡한 쿼리문은 못한다.....
+
+
+
+
+
+
+
+
+
+
+
